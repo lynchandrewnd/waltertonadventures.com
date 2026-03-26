@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HomeBase — AI-Powered Home Repair Guidance</title>
+  <meta name="description" content="HomeBase helps first-time homeowners confidently tackle DIY projects and stay on top of home maintenance with AI-powered guidance.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green-900: #0C3B2E;
+      --green-700: #1A6B4E;
+      --green-500: #2A9D6E;
+      --green-100: #E8F5EE;
+      --green-50: #F3FAF6;
+      --sand-100: #FAF8F5;
+      --sand-200: #F1EFE8;
+      --sand-400: #B4B2A9;
+      --text-primary: #1C1C1A;
+      --text-secondary: #5F5E5A;
+      --text-tertiary: #888780;
+      --white: #FFFFFF;
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      color: var(--text-primary);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 32px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px;
+      color: var(--green-700);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--green-700); }
+
+    /* HERO */
+    .hero {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 80px 32px 60px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--green-700);
+      background: var(--green-100);
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1.1;
+      color: var(--green-900);
+      margin-bottom: 20px;
+      font-weight: 400;
+    }
+    .hero p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      max-width: 540px;
+      margin: 0 auto 36px;
+    }
+    .hero-cta {
+      display: inline-block;
+      background: var(--green-700);
+      color: var(--white);
+      padding: 14px 32px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .hero-cta:hover { background: var(--green-900); }
+
+    /* FEATURES */
+    .features {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 40px 32px 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      background: var(--sand-100);
+      border-radius: 14px;
+      padding: 32px 28px;
+    }
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--green-100);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      font-size: 20px;
+    }
+    .feature-card h3 {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--green-900);
+    }
+    .feature-card p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    /* HOW IT WORKS */
+    .how-section {
+      background: var(--green-50);
+      padding: 80px 32px;
+    }
+    .how-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .how-inner h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      color: var(--green-900);
+      text-align: center;
+      margin-bottom: 48px;
+      font-weight: 400;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+      text-align: center;
+    }
+    .step-num {
+      width: 36px;
+      height: 36px;
+      background: var(--green-700);
+      color: var(--white);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .steps h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--green-900);
+    }
+    .steps p {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--text-secondary);
+    }
+
+    /* FOOTER */
+    footer {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 48px 32px;
+      border-top: 1px solid var(--sand-200);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-left {
+      font-size: 13px;
+      color: var(--text-tertiary);
+    }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a {
+      font-size: 13px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--green-700); }
+
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; }
+      .hero { padding: 48px 20px 40px; }
+      .features { padding: 24px 20px 60px; }
+      .how-section { padding: 48px 20px; }
+      footer { padding: 32px 20px; flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="logo">HomeBase</a>
+    <div class="nav-links">
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="mailto:support@waltertonadventures.com">Contact</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-badge">Coming soon to iOS</div>
+    <h1>Your AI-powered home repair companion</h1>
+    <p>HomeBase helps first-time homeowners confidently tackle DIY projects, know when to call a pro, and stay on top of home maintenance.</p>
+    <a href="mailto:support@waltertonadventures.com?subject=HomeBase%20—%20Notify%20me%20at%20launch" class="hero-cta">Get notified at launch</a>
+  </section>
+
+  <section class="features">
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1A6B4E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <h3>Project intelligence</h3>
+      <p>Describe your project and get a guided diagnosis. HomeBase asks smart questions, assesses complexity, and tells you whether it's DIY-friendly or worth calling a professional.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1A6B4E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <h3>My Home</h3>
+      <p>Save your home's details, equipment, and appliances in one place. HomeBase uses this context to give smarter, more specific recommendations for every project.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1A6B4E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <h3>Maintenance reminders</h3>
+      <p>Never forget to change a filter or flush the water heater again. Personalized reminders based on your home keep everything running smoothly.</p>
+    </div>
+  </section>
+
+  <section class="how-section">
+    <div class="how-inner">
+      <h2>How it works</h2>
+      <div class="steps">
+        <div>
+          <div class="step-num">1</div>
+          <h3>Describe your project</h3>
+          <p>Type what you're dealing with or snap a photo. No jargon required.</p>
+        </div>
+        <div>
+          <div class="step-num">2</div>
+          <h3>Answer a few questions</h3>
+          <p>HomeBase asks targeted questions to understand your specific situation.</p>
+        </div>
+        <div>
+          <div class="step-num">3</div>
+          <h3>Get your plan</h3>
+          <p>Receive a clear recommendation: DIY with step-by-step guidance, or a pro referral with a contractor script.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-left">&copy; 2026 Walterton Adventures LLC. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Service</a>
+      <a href="mailto:support@waltertonadventures.com">Support</a>
+    </div>
+  </footer>
+</body>
+</html>
