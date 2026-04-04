@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HomeBase — AI-Powered Home Repair Guidance</title>
-  <meta name="description" content="HomeBase helps first-time homeowners confidently tackle DIY projects and stay on top of home maintenance with AI-powered guidance.">
+  <title>Walterton Adventures LLC — HomeBase: AI-Powered Home Repair Guidance</title>
+  <meta name="description" content="Walterton Adventures LLC builds HomeBase, an iOS app that helps first-time homeowners confidently tackle DIY projects and stay on top of home maintenance with AI-powered guidance.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
@@ -190,6 +190,112 @@
       color: var(--text-secondary);
     }
 
+    /* ABOUT SECTION */
+    .about-section {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 80px 32px;
+    }
+    .mascot {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .mascot img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--green-100);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .mascot-caption {
+      font-size: 13px;
+      color: var(--text-tertiary);
+      margin-top: 10px;
+      font-style: italic;
+    }
+    .about-section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      color: var(--green-900);
+      text-align: center;
+      margin-bottom: 16px;
+      font-weight: 400;
+    }
+    .about-section .about-subtitle {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto 48px;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 32px;
+    }
+    .about-item h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--green-900);
+      margin-bottom: 8px;
+    }
+    .about-item p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+
+    /* CONTACT SECTION */
+    .contact-section {
+      background: var(--sand-100);
+      padding: 64px 32px;
+    }
+    .contact-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .contact-inner h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px;
+      color: var(--green-900);
+      margin-bottom: 16px;
+      font-weight: 400;
+    }
+    .contact-inner p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      max-width: 480px;
+      margin: 0 auto 24px;
+    }
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .contact-item {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+    .contact-item strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--green-900);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+    }
+    .contact-item a {
+      color: var(--green-700);
+      text-decoration: none;
+    }
+    .contact-item a:hover { text-decoration: underline; }
+
     /* FOOTER */
     footer {
       max-width: 960px;
@@ -220,21 +326,26 @@
       .hero { padding: 48px 20px 40px; }
       .features { padding: 24px 20px 60px; }
       .how-section { padding: 48px 20px; }
+      .about-section { padding: 48px 20px; }
+      .contact-section { padding: 40px 20px; }
       footer { padding: 32px 20px; flex-direction: column; text-align: center; }
+      .contact-info { flex-direction: column; gap: 20px; }
     }
   </style>
 </head>
 <body>
   <nav>
-    <a href="/" class="logo">HomeBase</a>
+    <a href="/" class="logo">Walterton Adventures</a>
     <div class="nav-links">
+      <a href="#product">Product</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
       <a href="/privacy.html">Privacy</a>
       <a href="/terms.html">Terms</a>
-      <a href="mailto:support@waltertonadventures.com">Contact</a>
     </div>
   </nav>
 
-  <section class="hero">
+  <section class="hero" id="product">
     <div class="hero-badge">Coming soon to iOS</div>
     <h1>Your AI-powered home repair companion</h1>
     <p>HomeBase helps first-time homeowners confidently tackle DIY projects, know when to call a pro, and stay on top of home maintenance.</p>
@@ -283,6 +394,50 @@
           <div class="step-num">3</div>
           <h3>Get your plan</h3>
           <p>Receive a clear recommendation: DIY with step-by-step guidance, or a pro referral with a contractor script.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section" id="about">
+    <div class="mascot">
+      <img src="walter.jpg" alt="Walter, the Walterton Adventures mascot — an Old English Sheepdog">
+      <p class="mascot-caption">Meet Walter, our Chief Morale Officer</p>
+    </div>
+    <h2>About Walterton Adventures LLC</h2>
+    <p class="about-subtitle">We build tools that make homeownership less intimidating. Based in Colorado, Walterton Adventures is focused on using AI to help people take better care of their homes.</p>
+    <div class="about-grid">
+      <div class="about-item">
+        <h3>Our mission</h3>
+        <p>Buying your first home is exciting — and then something breaks. Walterton Adventures was founded to close the knowledge gap between new homeowners and the DIY skills they need. We believe everyone deserves clear, trustworthy guidance that helps them decide what to tackle themselves and when to call a professional.</p>
+      </div>
+      <div class="about-item">
+        <h3>Why HomeBase</h3>
+        <p>HomeBase is our first product: an iOS app that pairs AI-powered project guidance with a personalized home profile. Instead of sifting through generic YouTube videos and forum threads, homeowners get step-by-step advice tailored to their specific home, equipment, and skill level — all in one place.</p>
+      </div>
+      <div class="about-item">
+        <h3>Our approach</h3>
+        <p>Safety comes first. HomeBase is designed to recognize when a project exceeds safe DIY territory — like anything involving a gas line, main electrical panel, or structural load — and recommends a licensed professional instead. We'd rather be honest about limitations than put someone at risk.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact">
+    <div class="contact-inner">
+      <h2>Get in touch</h2>
+      <p>Have a question about HomeBase or want to reach the team? We'd love to hear from you.</p>
+      <div class="contact-info">
+        <div class="contact-item">
+          <strong>Email</strong>
+          <a href="mailto:support@waltertonadventures.com">support@waltertonadventures.com</a>
+        </div>
+        <div class="contact-item">
+          <strong>Company</strong>
+          Walterton Adventures LLC
+        </div>
+        <div class="contact-item">
+          <strong>Location</strong>
+          Colorado, USA
         </div>
       </div>
     </div>
