@@ -1,443 +1,1270 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Walterton Adventures LLC — HomeBase: AI-Powered Home Repair Guidance</title>
-  <meta name="description" content="Walterton Adventures LLC builds HomeBase, an iOS app that helps first-time homeowners confidently tackle DIY projects and stay on top of home maintenance with AI-powered guidance.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HomeBase — Your AI-Powered Home Repair Companion</title>
+<meta name="description" content="HomeBase helps first-time homeowners confidently tackle DIY projects, know when to call a pro, and stay on top of home maintenance.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&display=swap" rel="stylesheet">
+<style>
+/* ========== RESET & VARS ========== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    :root {
-      --green-900: #0C3B2E;
-      --green-700: #1A6B4E;
-      --green-500: #2A9D6E;
-      --green-100: #E8F5EE;
-      --green-50: #F3FAF6;
-      --sand-100: #FAF8F5;
-      --sand-200: #F1EFE8;
-      --sand-400: #B4B2A9;
-      --text-primary: #1C1C1A;
-      --text-secondary: #5F5E5A;
-      --text-tertiary: #888780;
-      --white: #FFFFFF;
-    }
+:root {
+  --blue: #3B5BDB;
+  --blue-dark: #2A42A6;
+  --blue-light: #E8EDFC;
+  --blue-glow: rgba(59, 91, 219, 0.15);
+  --navy: #111833;
+  --text: #1A1D2B;
+  --text-secondary: #555B6E;
+  --bg: #FBFCFE;
+  --white: #FFFFFF;
+  --green: #2B8A5E;
+  --green-light: #E6F5ED;
+  --orange: #E67E22;
+  --orange-light: #FDF0E2;
+  --red-light: #FDEAEA;
+  --red: #D63A3A;
+  --radius: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --shadow-sm: 0 1px 3px rgba(17,24,51,0.06);
+  --shadow-md: 0 4px 20px rgba(17,24,51,0.08);
+  --shadow-lg: 0 12px 40px rgba(17,24,51,0.12);
+  --shadow-phone: 0 20px 60px rgba(17,24,51,0.18), 0 2px 8px rgba(17,24,51,0.08);
+}
 
-    body {
-      font-family: 'DM Sans', -apple-system, sans-serif;
-      color: var(--text-primary);
-      background: var(--white);
-      -webkit-font-smoothing: antialiased;
-    }
+html { scroll-behavior: smooth; }
 
-    /* NAV */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 32px;
-      max-width: 960px;
-      margin: 0 auto;
-    }
-    .logo {
-      font-family: 'DM Serif Display', serif;
-      font-size: 22px;
-      color: var(--green-700);
-      text-decoration: none;
-    }
-    .nav-links { display: flex; gap: 28px; }
-    .nav-links a {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text-secondary);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--green-700); }
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
 
-    /* HERO */
-    .hero {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 80px 32px 60px;
-      text-align: center;
-    }
-    .hero-badge {
-      display: inline-block;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--green-700);
-      background: var(--green-100);
-      padding: 6px 14px;
-      border-radius: 20px;
-      margin-bottom: 24px;
-    }
-    .hero h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(36px, 5vw, 56px);
-      line-height: 1.1;
-      color: var(--green-900);
-      margin-bottom: 20px;
-      font-weight: 400;
-    }
-    .hero p {
-      font-size: 18px;
-      line-height: 1.6;
-      color: var(--text-secondary);
-      max-width: 540px;
-      margin: 0 auto 36px;
-    }
-    .hero-cta {
-      display: inline-block;
-      background: var(--green-700);
-      color: var(--white);
-      padding: 14px 32px;
-      border-radius: 10px;
-      font-size: 15px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-    .hero-cta:hover { background: var(--green-900); }
+/* ========== UTILITY ========== */
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
 
-    /* FEATURES */
-    .features {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 40px 32px 80px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-    }
-    .feature-card {
-      background: var(--sand-100);
-      border-radius: 14px;
-      padding: 32px 28px;
-    }
-    .feature-icon {
-      width: 44px;
-      height: 44px;
-      background: var(--green-100);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 18px;
-      font-size: 20px;
-    }
-    .feature-card h3 {
-      font-size: 17px;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: var(--green-900);
-    }
-    .feature-card p {
-      font-size: 14px;
-      line-height: 1.6;
-      color: var(--text-secondary);
-    }
+.section-label {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 12px;
+}
 
-    /* HOW IT WORKS */
-    .how-section {
-      background: var(--green-50);
-      padding: 80px 32px;
-    }
-    .how-inner {
-      max-width: 960px;
-      margin: 0 auto;
-    }
-    .how-inner h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 32px;
-      color: var(--green-900);
-      text-align: center;
-      margin-bottom: 48px;
-      font-weight: 400;
-    }
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 32px;
-      text-align: center;
-    }
-    .step-num {
-      width: 36px;
-      height: 36px;
-      background: var(--green-700);
-      color: var(--white);
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 14px;
-    }
-    .steps h3 {
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 6px;
-      color: var(--green-900);
-    }
-    .steps p {
-      font-size: 14px;
-      line-height: 1.5;
-      color: var(--text-secondary);
-    }
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--navy);
+  margin-bottom: 16px;
+}
 
-    /* ABOUT SECTION */
-    .about-section {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 80px 32px;
-    }
-    .mascot {
-      text-align: center;
-      margin-bottom: 28px;
-    }
-    .mascot img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--green-100);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-    .mascot-caption {
-      font-size: 13px;
-      color: var(--text-tertiary);
-      margin-top: 10px;
-      font-style: italic;
-    }
-    .about-section h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 32px;
-      color: var(--green-900);
-      text-align: center;
-      margin-bottom: 16px;
-      font-weight: 400;
-    }
-    .about-section .about-subtitle {
-      font-size: 16px;
-      line-height: 1.6;
-      color: var(--text-secondary);
-      text-align: center;
-      max-width: 620px;
-      margin: 0 auto 48px;
-    }
-    .about-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 32px;
-    }
-    .about-item h3 {
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--green-900);
-      margin-bottom: 8px;
-    }
-    .about-item p {
-      font-size: 14px;
-      line-height: 1.7;
-      color: var(--text-secondary);
-    }
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 560px;
+  line-height: 1.7;
+}
 
-    /* CONTACT SECTION */
-    .contact-section {
-      background: var(--sand-100);
-      padding: 64px 32px;
-    }
-    .contact-inner {
-      max-width: 960px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    .contact-inner h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 28px;
-      color: var(--green-900);
-      margin-bottom: 16px;
-      font-weight: 400;
-    }
-    .contact-inner p {
-      font-size: 15px;
-      line-height: 1.7;
-      color: var(--text-secondary);
-      max-width: 480px;
-      margin: 0 auto 24px;
-    }
-    .contact-info {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-    .contact-item {
-      font-size: 14px;
-      color: var(--text-secondary);
-    }
-    .contact-item strong {
-      display: block;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--green-900);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-bottom: 4px;
-    }
-    .contact-item a {
-      color: var(--green-700);
-      text-decoration: none;
-    }
-    .contact-item a:hover { text-decoration: underline; }
+/* ========== ANIMATIONS ========== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
-    /* FOOTER */
-    footer {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 48px 32px;
-      border-top: 1px solid var(--sand-200);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-    .footer-left {
-      font-size: 13px;
-      color: var(--text-tertiary);
-    }
-    .footer-links { display: flex; gap: 24px; }
-    .footer-links a {
-      font-size: 13px;
-      color: var(--text-secondary);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-links a:hover { color: var(--green-700); }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
 
-    @media (max-width: 600px) {
-      nav { padding: 16px 20px; }
-      .hero { padding: 48px 20px 40px; }
-      .features { padding: 24px 20px 60px; }
-      .how-section { padding: 48px 20px; }
-      .about-section { padding: 48px 20px; }
-      .contact-section { padding: 40px 20px; }
-      footer { padding: 32px 20px; flex-direction: column; text-align: center; }
-      .contact-info { flex-direction: column; gap: 20px; }
-    }
-  </style>
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========== NAV ========== */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 16px 0;
+  transition: background 0.3s, box-shadow 0.3s, padding 0.3s;
+}
+
+.nav.scrolled {
+  background: rgba(251,252,254,0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 1px 12px rgba(17,24,51,0.06);
+  padding: 10px 0;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--navy);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-logo svg {
+  width: 28px;
+  height: 28px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--blue); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.btn-primary {
+  background: var(--blue);
+  color: var(--white);
+  box-shadow: 0 2px 12px rgba(59,91,219,0.3);
+}
+
+.btn-primary:hover {
+  background: var(--blue-dark);
+  box-shadow: 0 4px 20px rgba(59,91,219,0.4);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: var(--white);
+  color: var(--blue);
+  border: 1.5px solid var(--blue);
+}
+
+.btn-secondary:hover {
+  background: var(--blue-light);
+}
+
+.nav-cta {
+  padding: 10px 20px;
+  font-size: 0.88rem;
+}
+
+/* ========== MOBILE MENU ========== */
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  position: relative;
+}
+
+.mobile-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--navy);
+  position: absolute;
+  left: 7px;
+  transition: all 0.3s;
+}
+
+.mobile-toggle span:nth-child(1) { top: 10px; }
+.mobile-toggle span:nth-child(2) { top: 17px; }
+.mobile-toggle span:nth-child(3) { top: 24px; }
+
+/* ========== HERO ========== */
+.hero {
+  padding: 160px 0 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -20%;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, var(--blue-glow) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(43,138,94,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.hero-content {
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--blue-light);
+  color: var(--blue);
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.hero-badge svg {
+  width: 16px;
+  height: 16px;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 5.5vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.12;
+  color: var(--navy);
+  margin-bottom: 20px;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--blue);
+}
+
+.hero-description {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 36px;
+  max-width: 480px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.hero-phone {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  animation: fadeUp 0.8s 0.2s ease both;
+}
+
+/* ========== PHONE MOCKUP ========== */
+.phone-frame {
+  position: relative;
+  width: 280px;
+  border-radius: 40px;
+  background: #000;
+  padding: 12px;
+  box-shadow: var(--shadow-phone);
+}
+
+.phone-frame::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 28px;
+  background: #000;
+  border-radius: 0 0 18px 18px;
+  z-index: 2;
+}
+
+.phone-frame img {
+  width: 100%;
+  display: block;
+  border-radius: 30px;
+  background: #f0f0f0;
+}
+
+.phone-frame-sm {
+  width: 220px;
+}
+
+.phone-frame-sm::before {
+  width: 90px;
+  height: 22px;
+  border-radius: 0 0 14px 14px;
+}
+
+.phone-frame-sm img {
+  border-radius: 24px;
+}
+
+/* Floating phone (hero) */
+.hero-phone .phone-frame {
+  animation: float 6s ease-in-out infinite;
+}
+
+.phone-glow {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 40px;
+  background: radial-gradient(ellipse, rgba(59,91,219,0.15) 0%, transparent 70%);
+  filter: blur(10px);
+}
+
+/* ========== TRUST BAR ========== */
+.trust-bar {
+  padding: 48px 0;
+  text-align: center;
+}
+
+.trust-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.trust-item svg {
+  width: 20px;
+  height: 20px;
+  color: var(--green);
+}
+
+/* ========== FEATURES ========== */
+.features {
+  padding: 80px 0 100px;
+}
+
+.features-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.features-header .section-subtitle {
+  margin: 0 auto;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.feature-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px 0;
+  border: 1px solid rgba(17,24,51,0.06);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.feature-icon.blue   { background: var(--blue-light); color: var(--blue); }
+.feature-icon.green  { background: var(--green-light); color: var(--green); }
+.feature-icon.orange { background: var(--orange-light); color: var(--orange); }
+
+.feature-icon svg { width: 24px; height: 24px; }
+
+.feature-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--navy);
+}
+
+.feature-card p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.feature-screenshot {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.feature-screenshot img {
+  width: 200px;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+}
+
+/* ========== HOW IT WORKS ========== */
+.how-it-works {
+  padding: 100px 0;
+  background: var(--navy);
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+.how-it-works::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -20%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(59,91,219,0.2) 0%, transparent 70%);
+}
+
+.how-it-works .section-label { color: rgba(255,255,255,0.5); }
+.how-it-works .section-title { color: var(--white); }
+.how-it-works .section-subtitle { color: rgba(255,255,255,0.65); }
+
+.hiw-header {
+  text-align: center;
+  margin-bottom: 72px;
+  position: relative;
+}
+
+.hiw-header .section-subtitle { margin: 0 auto; }
+
+.hiw-grid {
+  display: grid;
+  grid-template-columns: 1fr 280px 1fr;
+  gap: 48px;
+  align-items: center;
+  position: relative;
+}
+
+.hiw-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.hiw-step {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.hiw-step-num {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(59,91,219,0.2);
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.hiw-step h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.hiw-step p {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.6;
+}
+
+.hiw-phone {
+  display: flex;
+  justify-content: center;
+}
+
+.hiw-phone .phone-frame {
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+/* ========== AI SHOWCASE ========== */
+.ai-showcase {
+  padding: 100px 0;
+}
+
+.ai-showcase-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.ai-showcase-header .section-subtitle { margin: 0 auto; }
+
+.ai-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.ai-card {
+  border-radius: var(--radius-xl);
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.ai-card.diy {
+  background: linear-gradient(135deg, var(--blue-light) 0%, #f0f4ff 100%);
+}
+
+.ai-card.pro {
+  background: linear-gradient(135deg, var(--red-light) 0%, #fff5f0 100%);
+}
+
+.ai-card-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.ai-card.diy .ai-card-label {
+  background: rgba(59,91,219,0.12);
+  color: var(--blue);
+}
+
+.ai-card.pro .ai-card-label {
+  background: rgba(214,58,58,0.12);
+  color: var(--red);
+}
+
+.ai-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.ai-card p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 28px;
+  max-width: 360px;
+}
+
+.ai-card .phone-frame-sm {
+  margin-top: auto;
+}
+
+/* ========== WALTER ========== */
+.walter-section {
+  padding: 80px 0;
+  background: linear-gradient(180deg, var(--bg) 0%, var(--blue-light) 50%, var(--bg) 100%);
+  overflow: hidden;
+}
+
+.walter-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.walter-image-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.walter-image {
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid var(--white);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  z-index: 1;
+}
+
+.walter-image-wrap::before {
+  content: '';
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue) 0%, #6B83E8 100%);
+  opacity: 0.15;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.walter-content .section-title {
+  font-size: clamp(2rem, 3.5vw, 2.6rem);
+}
+
+.walter-role {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--blue);
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.walter-bio {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+.walter-bio + .walter-bio {
+  margin-top: 16px;
+}
+
+/* ========== ABOUT ========== */
+.about {
+  padding: 100px 0;
+}
+
+.about-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-inner .section-subtitle {
+  margin: 0 auto 32px;
+}
+
+.about-values {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 48px;
+}
+
+.about-value {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 28px 20px;
+  border: 1px solid rgba(17,24,51,0.06);
+  text-align: center;
+}
+
+.about-value-icon {
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+}
+
+.about-value h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+  color: var(--navy);
+}
+
+.about-value p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ========== CTA ========== */
+.cta-section {
+  padding: 80px 0 100px;
+}
+
+.cta-card {
+  background: var(--navy);
+  border-radius: var(--radius-xl);
+  padding: 72px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(59,91,219,0.25) 0%, transparent 60%);
+}
+
+.cta-card::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(43,138,94,0.1) 0%, transparent 60%);
+}
+
+.cta-card > * { position: relative; z-index: 1; }
+
+.cta-card .section-title {
+  color: var(--white);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  margin-bottom: 16px;
+}
+
+.cta-card p {
+  color: rgba(255,255,255,0.65);
+  font-size: 1.1rem;
+  max-width: 480px;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+}
+
+.cta-card .btn-primary {
+  background: var(--white);
+  color: var(--blue);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  font-size: 1.05rem;
+  padding: 16px 32px;
+}
+
+.cta-card .btn-primary:hover {
+  background: #f0f4ff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(0,0,0,0.25);
+}
+
+.cta-ios-note {
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.4);
+}
+
+/* ========== FOOTER ========== */
+.footer {
+  padding: 40px 0;
+  border-top: 1px solid rgba(17,24,51,0.06);
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-copy {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+.footer-links a {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--blue); }
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 900px) {
+  .hero { padding: 120px 0 60px; }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 48px;
+  }
+
+  .hero-description { margin: 0 auto 36px; }
+
+  .hero-actions { justify-content: center; }
+
+  .hero-phone { order: -1; }
+
+  .hero-phone .phone-frame {
+    width: 220px;
+    animation: none;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .hiw-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .hiw-phone { order: -1; }
+
+  .hiw-phone .phone-frame { width: 220px; }
+
+  .hiw-steps-right { order: 3; }
+
+  .ai-cards {
+    grid-template-columns: 1fr;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  .walter-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .walter-image { width: 260px; height: 260px; }
+  .walter-image-wrap::before { width: 300px; height: 300px; }
+
+  .about-values {
+    grid-template-columns: 1fr;
+    max-width: 340px;
+    margin: 48px auto 0;
+  }
+
+  .nav-links { display: none; }
+  .mobile-toggle { display: block; }
+
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    padding: 24px;
+    border-radius: 0 0 var(--radius) var(--radius);
+    box-shadow: var(--shadow-lg);
+    gap: 16px;
+  }
+
+  .cta-card { padding: 48px 28px; }
+}
+
+@media (max-width: 480px) {
+  .hero-title { font-size: 2.2rem; }
+  .hero-phone .phone-frame { width: 190px; }
+  .phone-frame-sm { width: 180px; }
+  .walter-image { width: 200px; height: 200px; }
+  .walter-image-wrap::before { width: 240px; height: 240px; }
+  .ai-card { padding: 32px 24px; }
+  .trust-bar-inner { gap: 20px; }
+}
+</style>
 </head>
 <body>
-  <nav>
-    <a href="/" class="logo">Walterton Adventures</a>
-    <div class="nav-links">
-      <a href="#product">Product</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-      <a href="/privacy.html">Privacy</a>
-      <a href="/terms.html">Terms</a>
-    </div>
-  </nav>
 
-  <section class="hero" id="product">
-    <div class="hero-badge">Coming soon to iOS</div>
-    <h1>Your AI-powered home repair companion</h1>
-    <p>HomeBase helps first-time homeowners confidently tackle DIY projects, know when to call a pro, and stay on top of home maintenance.</p>
-    <a href="/cdn-cgi/l/email-protection#a6d5d3d6d6c9d4d2e6d1c7cad2c3d4d2c9c8c7c2d0c3c8d2d3d4c3d588c5c9cb99d5d3c4ccc3c5d29beec9cbc3e4c7d5c3839496442632839496e8c9d2cfc0df839496cbc3839496c7d2839496cac7d3c8c5ce" class="hero-cta">Get notified at launch</a>
-  </section>
+<!-- ========== NAV ========== -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo">
+      <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="28" height="28" rx="8" fill="#3B5BDB"/>
+        <path d="M7 20V10l7-4 7 4v10l-7 4-7-4z" fill="#fff" opacity="0.9"/>
+        <path d="M14 6v18M7 10l7 4 7-4M7 16l7 4 7-4" stroke="#3B5BDB" stroke-width="1.2"/>
+      </svg>
+      HomeBase
+    </a>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#walter">Walter</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="/cdn-cgi/l/email-protection#a3cbc6cfcfcce3d4c2cfd7c6d1d7cccdc2c7d5c6cdd7d6d1c6d08dc0ccce" class="btn btn-primary nav-cta">Get Early Access</a></li>
+    </ul>
+  </div>
+</nav>
 
-  <section class="features">
-    <div class="feature-card">
-      <div class="feature-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1A6B4E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+<!-- ========== HERO ========== -->
+<section class="hero" id="hero">
+  <div class="container hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a1 1 0 01.9.56l1.48 2.99 3.3.48a1 1 0 01.55 1.7l-2.39 2.33.56 3.29a1 1 0 01-1.45 1.05L8 11.62l-2.95 1.55a1 1 0 01-1.45-1.05l.56-3.29L1.77 6.5a1 1 0 01.56-1.7l3.3-.48L7.1 1.56A1 1 0 018 1z"/></svg>
+        Coming soon to iOS
       </div>
-      <h3>Project intelligence</h3>
-      <p>Describe your project and get a guided diagnosis. HomeBase asks smart questions, assesses complexity, and tells you whether it's DIY-friendly or worth calling a professional.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1A6B4E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <h1 class="hero-title">Something broke.<br><em>Now what?</em></h1>
+      <p class="hero-description">HomeBase is the AI companion that walks first-time homeowners through repairs step by step — or tells you when it's time to call in a pro.</p>
+      <div class="hero-actions">
+        <a href="/cdn-cgi/l/email-protection#2b434e4747446b5c4a475f4e595f44454a4f5d4e455f5e594e5805484446" class="btn btn-primary">
+          Get Notified at Launch
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#how-it-works" class="btn btn-secondary">See How It Works</a>
       </div>
-      <h3>My Home</h3>
-      <p>Save your home's details, equipment, and appliances in one place. HomeBase uses this context to give smarter, more specific recommendations for every project.</p>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1A6B4E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    <div class="hero-phone">
+      <div class="phone-frame">
+        <img src="projects-home.png" alt="HomeBase Projects screen showing project input and popular project types" loading="eager">
       </div>
-      <h3>Maintenance reminders</h3>
-      <p>Never forget to change a filter or flush the water heater again. Personalized reminders based on your home keep everything running smoothly.</p>
+      <div class="phone-glow"></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="how-section">
-    <div class="how-inner">
-      <h2>How it works</h2>
-      <div class="steps">
-        <div>
-          <div class="step-num">1</div>
-          <h3>Describe your project</h3>
-          <p>Type what you're dealing with or snap a photo. No jargon required.</p>
+<!-- ========== TRUST BAR ========== -->
+<div class="trust-bar">
+  <div class="container trust-bar-inner">
+    <div class="trust-item">
+      <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+      Safety-first recommendations
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+      Personalized to your home
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+      No jargon. No guesswork.
+    </div>
+  </div>
+</div>
+
+<!-- ========== FEATURES ========== -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="features-header animate-on-scroll">
+      <div class="section-label">Features</div>
+      <h2 class="section-title">Three tools every homeowner needs</h2>
+      <p class="section-subtitle">HomeBase combines AI-powered diagnostics, a personalized home profile, and smart maintenance tracking — all in one app.</p>
+    </div>
+    <div class="features-grid">
+
+      <div class="feature-card animate-on-scroll">
+        <div class="feature-icon blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
         </div>
-        <div>
-          <div class="step-num">2</div>
-          <h3>Answer a few questions</h3>
-          <p>HomeBase asks targeted questions to understand your specific situation.</p>
-        </div>
-        <div>
-          <div class="step-num">3</div>
-          <h3>Get your plan</h3>
-          <p>Receive a clear recommendation: DIY with step-by-step guidance, or a pro referral with a contractor script.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="about-section" id="about">
-    <div class="mascot">
-      <img src="Walter.jpg" alt="Walter, the Walterton Adventures mascot — an Old English Sheepdog">
-      <p class="mascot-caption">Meet Walter, our Chief Morale Officer</p>
-    </div>
-    <h2>About Walterton Adventures LLC</h2>
-    <p class="about-subtitle">We build tools that make homeownership less intimidating. Walterton Adventures is focused on using AI to help people take better care of their homes.</p>
-    <div class="about-grid">
-      <div class="about-item">
-        <h3>Our mission</h3>
-        <p>Buying your first home is exciting — and then something breaks. Walterton Adventures was founded to close the knowledge gap between new homeowners and the DIY skills they need. We believe everyone deserves clear, trustworthy guidance that helps them decide what to tackle themselves and when to call a professional.</p>
-      </div>
-      <div class="about-item">
-        <h3>Why HomeBase</h3>
-        <p>HomeBase is our first product: an iOS app that pairs AI-powered project guidance with a personalized home profile. Instead of sifting through generic YouTube videos and forum threads, homeowners get step-by-step advice tailored to their specific home, equipment, and skill level — all in one place.</p>
-      </div>
-      <div class="about-item">
-        <h3>Our approach</h3>
-        <p>Safety comes first. HomeBase is designed to recognize when a project exceeds safe DIY territory — like anything involving a gas line, main electrical panel, or structural load — and recommends a licensed professional instead. We'd rather be honest about limitations than put someone at risk.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="contact-section" id="contact">
-    <div class="contact-inner">
-      <h2>Get in touch</h2>
-      <p>Have a question about HomeBase or want to reach the team? We'd love to hear from you.</p>
-      <div class="contact-info">
-        <div class="contact-item">
-          <strong>Email</strong>
-          <a href="/cdn-cgi/l/email-protection#bbc8cecbcbd4c9cffbccdad7cfdec9cfd4d5dadfcdded5cfcec9dec895d8d4d6"><span class="__cf_email__" data-cfemail="76050306061904023601171a021304021918171200131802030413055815191b">[email&#160;protected]</span></a>
-        </div>
-        <div class="contact-item">
-          <strong>Company</strong>
-          Walterton Adventures LLC
+        <h3>Smart Project Diagnosis</h3>
+        <p>Describe what's going on — in plain English. HomeBase asks the right follow-up questions, then gives you a clear plan: step-by-step DIY guidance or a pro referral with a script for what to tell the contractor.</p>
+        <div class="feature-screenshot">
+          <img src="describe-your-project.jpg" alt="Typing a project description into HomeBase" loading="lazy">
         </div>
       </div>
-    </div>
-  </section>
 
-  <footer>
-    <div class="footer-left">&copy; 2026 Walterton Adventures LLC
+      <div class="feature-card animate-on-scroll">
+        <div class="feature-icon green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>Your Home's Digital Brain</h3>
+        <p>Save your home's details — zip code, age, systems, equipment model numbers — and HomeBase uses it all to give smarter, more specific advice every time you start a project.</p>
+        <div class="feature-screenshot">
+          <img src="my-home-profile.png" alt="My Home profile with saved systems and equipment" loading="lazy">
+        </div>
+      </div>
+
+      <div class="feature-card animate-on-scroll">
+        <div class="feature-icon orange">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Maintenance on Autopilot</h3>
+        <p>Changing filters, cleaning gutters, flushing the water heater — the stuff you always forget. HomeBase sends personalized reminders based on your home so nothing falls through the cracks.</p>
+        <div class="feature-screenshot">
+          <img src="maintenance-reminders.jpg" alt="Maintenance reminders with task cards" loading="lazy">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== HOW IT WORKS ========== -->
+<section class="how-it-works" id="how-it-works">
+  <div class="container">
+    <div class="hiw-header animate-on-scroll">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">From "what is that?" to "I fixed it"</h2>
+      <p class="section-subtitle">No Googling, no doom-scrolling through forum threads. Just describe what's going on and HomeBase handles the rest.</p>
+    </div>
+    <div class="hiw-grid">
+      <div class="hiw-steps animate-on-scroll">
+        <div class="hiw-step">
+          <div class="hiw-step-num">1</div>
+          <div>
+            <h4>Describe what's happening</h4>
+            <p>Type it out or snap a photo. Use whatever words you want — HomeBase speaks homeowner, not contractor.</p>
+          </div>
+        </div>
+        <div class="hiw-step">
+          <div class="hiw-step-num">2</div>
+          <div>
+            <h4>Answer a few smart questions</h4>
+            <p>HomeBase narrows down your situation with targeted follow-ups — like a knowledgeable friend who actually knows what they're talking about.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hiw-phone animate-on-scroll">
+        <div class="phone-frame">
+          <img src="diy-project-guidance.jpg" alt="HomeBase AI diagnostic conversation about mounting a TV" loading="lazy">
+        </div>
+      </div>
+
+      <div class="hiw-steps hiw-steps-right animate-on-scroll">
+        <div class="hiw-step">
+          <div class="hiw-step-num">3</div>
+          <div>
+            <h4>Get your plan</h4>
+            <p>DIY? You'll get a step-by-step walkthrough with product recommendations. Need a pro? You'll get a contractor script and cost estimate — no awkward phone calls.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== AI SHOWCASE ========== -->
+<section class="ai-showcase" id="ai-showcase">
+  <div class="container">
+    <div class="ai-showcase-header animate-on-scroll">
+      <div class="section-label">AI That's Honest</div>
+      <h2 class="section-title">It'll tell you when <em>not</em> to do it yourself</h2>
+      <p class="section-subtitle">Most apps want you to buy more stuff. HomeBase tells you the truth — even when the answer is "hire someone."</p>
+    </div>
+    <div class="ai-cards">
+      <div class="ai-card diy animate-on-scroll">
+        <div class="ai-card-label">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M7 0a7 7 0 100 14A7 7 0 007 0zm3.5 5.74l-4 4a.75.75 0 01-1.06 0l-2-2a.75.75 0 111.06-1.06L6 8.18l3.47-3.47a.75.75 0 011.06 1.06z"/></svg>
+          DIY — You've Got This
+        </div>
+        <h3>Mount a TV? No sweat.</h3>
+        <p>HomeBase walks you through the project, recommends the exact mount to buy, and gives you step-by-step instructions tailored to your TV and wall type.</p>
+        <div class="phone-frame phone-frame-sm">
+          <img src="diy-project-guidance.jpg" alt="DIY project guidance for mounting a TV" loading="lazy">
+        </div>
+      </div>
+
+      <div class="ai-card pro animate-on-scroll">
+        <div class="ai-card-label">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M7 0a7 7 0 100 14A7 7 0 007 0zm.75 3.5v4a.75.75 0 01-1.5 0v-4a.75.75 0 011.5 0zM7 11a1 1 0 110-2 1 1 0 010 2z"/></svg>
+          Stop — Call a Professional
+        </div>
+        <h3>Aluminum wiring? Hard no.</h3>
+        <p>HomeBase flags safety risks before you touch anything. It explains why, gives you a cost estimate, and tells you exactly what to say when you call an electrician.</p>
+        <div class="phone-frame phone-frame-sm">
+          <img src="call-a-pro-safety.jpg" alt="Safety warning recommending a licensed electrician" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== WALTER ========== -->
+<section class="walter-section" id="walter">
+  <div class="container">
+    <div class="walter-inner animate-on-scroll">
+      <div class="walter-image-wrap">
+        <img src="Walter.jpg" alt="Walter, an Old English Sheepdog and the HomeBase mascot" class="walter-image" loading="lazy">
+      </div>
+      <div class="walter-content">
+        <div class="section-label">Meet the Team</div>
+        <h2 class="section-title">This is Walter.</h2>
+        <span class="walter-role">Chief Morale Officer, Walterton Adventures LLC</span>
+        <p class="walter-bio">Walter is an Old English Sheepdog, the official mascot of Walterton Adventures, and the reason the company exists. He's not great at fixing things — but he's excellent at supervising from the couch while you do.</p>
+        <p class="walter-bio">He believes every homeowner deserves a companion who'll stick with them through leaky faucets, mysterious noises, and the existential dread of a tripped breaker. That companion is HomeBase. Walter just provides the moral support.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ABOUT ========== -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-inner animate-on-scroll">
+      <div class="section-label">About</div>
+      <h2 class="section-title">Built for the "now what?" moment</h2>
+      <p class="section-subtitle">Buying your first home is exciting — and then something breaks. Walterton Adventures was founded to close the knowledge gap between new homeowners and the skills they need. We believe everyone deserves clear, trustworthy guidance.</p>
+
+      <div class="about-values">
+        <div class="about-value">
+          <div class="about-value-icon">🛡️</div>
+          <h4>Safety First</h4>
+          <p>HomeBase recognizes when a project exceeds safe DIY territory and recommends a licensed professional instead.</p>
+        </div>
+        <div class="about-value">
+          <div class="about-value-icon">🎯</div>
+          <h4>Specific, Not Generic</h4>
+          <p>Advice tailored to your actual home, equipment, and skill level — not a one-size-fits-all YouTube video.</p>
+        </div>
+        <div class="about-value">
+          <div class="about-value-icon">🤝</div>
+          <h4>Honest Answers</h4>
+          <p>We'd rather tell you to call a pro than put you at risk. No upsells, no agenda — just the right call for your situation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA ========== -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-card animate-on-scroll">
+      <h2 class="section-title">Stop Googling.<br>Start fixing.</h2>
+      <p>HomeBase is launching soon on iOS. Drop us a line to get early access and be the first to know when it's live.</p>
+      <a href="/cdn-cgi/l/email-protection#b9d1dcd5d5d6f9ced8d5cddccbcdd6d7d8ddcfdcd7cdcccbdcca97dad6d4" class="btn btn-primary">
+        Get Early Access
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <p class="cta-ios-note">Coming soon to iOS</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <p class="footer-copy">&copy; 2026 Walterton Adventures LLC</p>
+    <ul class="footer-links">
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="terms.html">Terms</a></li>
+      <li><a href="/cdn-cgi/l/email-protection#a6cec3cacac9e6d1c7cad2c3d4d2c9c8c7c2d0c3c8d2d3d4c3d588c5c9cb">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Mobile menu
+const toggle = document.getElementById('mobileToggle');
+const links = document.getElementById('navLinks');
+toggle.addEventListener('click', () => {
+  links.classList.toggle('open');
+});
+
+// Close mobile menu on link click
+links.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => links.classList.remove('open'));
+});
+
+// Scroll animations
+const observer = new Intersec
