@@ -115,14 +115,14 @@ body {
   right: 0;
   z-index: 100;
   padding: 16px 0;
-  background: rgba(251,252,254,0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(251,252,254,0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   transition: background 0.3s, box-shadow 0.3s, padding 0.3s;
 }
 
 .nav.scrolled {
-  background: rgba(251,252,254,0.95);
+  background: rgba(251,252,254,0.97);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   box-shadow: 0 1px 12px rgba(17,24,51,0.08);
@@ -157,8 +157,8 @@ body {
 
 .nav-links a {
   font-size: 0.92rem;
-  font-weight: 500;
-  color: var(--text-secondary);
+  font-weight: 600;
+  color: var(--navy);
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -200,7 +200,13 @@ body {
 
 .btn-secondary:hover { background: var(--blue-light); }
 
-.nav-cta { padding: 10px 20px; font-size: 0.88rem; }
+.nav-cta {
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  color: #FFFFFF !important;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
 
 /* ========== MOBILE MENU ========== */
 .mobile-toggle {
