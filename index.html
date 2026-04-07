@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HomeBase — Your AI-Powered Home Repair Companion</title>
+<title>HomeBase - Your AI-Powered Home Repair Companion</title>
 <meta name="description" content="HomeBase helps first-time homeowners confidently tackle DIY projects, know when to call a pro, and stay on top of home maintenance.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -89,28 +89,20 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50%      { transform: translateY(-10px); }
 }
 
-@keyframes shimmer {
-  0%   { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-.animate-on-scroll {
+/* Elements are VISIBLE by default. JS adds .scroll-hidden on load,
+   then IntersectionObserver adds .visible. If JS fails, content stays visible. */
+.scroll-hidden {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
-.animate-on-scroll.visible {
+.scroll-hidden.visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -123,14 +115,17 @@ body {
   right: 0;
   z-index: 100;
   padding: 16px 0;
+  background: rgba(251,252,254,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   transition: background 0.3s, box-shadow 0.3s, padding 0.3s;
 }
 
 .nav.scrolled {
-  background: rgba(251,252,254,0.92);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 1px 12px rgba(17,24,51,0.06);
+  background: rgba(251,252,254,0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 1px 12px rgba(17,24,51,0.08);
   padding: 10px 0;
 }
 
@@ -151,10 +146,7 @@ body {
   gap: 10px;
 }
 
-.nav-logo svg {
-  width: 28px;
-  height: 28px;
-}
+.nav-logo svg { width: 28px; height: 28px; }
 
 .nav-links {
   display: flex;
@@ -206,14 +198,9 @@ body {
   border: 1.5px solid var(--blue);
 }
 
-.btn-secondary:hover {
-  background: var(--blue-light);
-}
+.btn-secondary:hover { background: var(--blue-light); }
 
-.nav-cta {
-  padding: 10px 20px;
-  font-size: 0.88rem;
-}
+.nav-cta { padding: 10px 20px; font-size: 0.88rem; }
 
 /* ========== MOBILE MENU ========== */
 .mobile-toggle {
@@ -276,9 +263,7 @@ body {
   align-items: center;
 }
 
-.hero-content {
-  animation: fadeUp 0.8s ease forwards;
-}
+.hero-content { animation: fadeUp 0.8s ease forwards; }
 
 .hero-badge {
   display: inline-flex;
@@ -293,10 +278,7 @@ body {
   margin-bottom: 24px;
 }
 
-.hero-badge svg {
-  width: 16px;
-  height: 16px;
-}
+.hero-badge svg { width: 16px; height: 16px; }
 
 .hero-title {
   font-family: var(--font-display);
@@ -363,9 +345,7 @@ body {
   background: #f0f0f0;
 }
 
-.phone-frame-sm {
-  width: 220px;
-}
+.phone-frame-sm { width: 220px; }
 
 .phone-frame-sm::before {
   width: 90px;
@@ -373,14 +353,9 @@ body {
   border-radius: 0 0 14px 14px;
 }
 
-.phone-frame-sm img {
-  border-radius: 24px;
-}
+.phone-frame-sm img { border-radius: 24px; }
 
-/* Floating phone (hero) */
-.hero-phone .phone-frame {
-  animation: float 6s ease-in-out infinite;
-}
+.hero-phone .phone-frame { animation: float 6s ease-in-out infinite; }
 
 .phone-glow {
   position: absolute;
@@ -394,10 +369,7 @@ body {
 }
 
 /* ========== TRUST BAR ========== */
-.trust-bar {
-  padding: 48px 0;
-  text-align: center;
-}
+.trust-bar { padding: 48px 0; text-align: center; }
 
 .trust-bar-inner {
   display: flex;
@@ -416,25 +388,17 @@ body {
   font-weight: 500;
 }
 
-.trust-item svg {
-  width: 20px;
-  height: 20px;
-  color: var(--green);
-}
+.trust-item svg { width: 20px; height: 20px; color: var(--green); }
 
 /* ========== FEATURES ========== */
-.features {
-  padding: 80px 0 100px;
-}
+.features { padding: 80px 0 100px; }
 
 .features-header {
   text-align: center;
   margin-bottom: 64px;
 }
 
-.features-header .section-subtitle {
-  margin: 0 auto;
-}
+.features-header .section-subtitle { margin: 0 auto; }
 
 .features-grid {
   display: grid;
@@ -580,19 +544,12 @@ body {
   line-height: 1.6;
 }
 
-.hiw-phone {
-  display: flex;
-  justify-content: center;
-}
+.hiw-phone { display: flex; justify-content: center; }
 
-.hiw-phone .phone-frame {
-  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-}
+.hiw-phone .phone-frame { box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
 
 /* ========== AI SHOWCASE ========== */
-.ai-showcase {
-  padding: 100px 0;
-}
+.ai-showcase { padding: 100px 0; }
 
 .ai-showcase-header {
   text-align: center;
@@ -616,13 +573,8 @@ body {
   text-align: center;
 }
 
-.ai-card.diy {
-  background: linear-gradient(135deg, var(--blue-light) 0%, #f0f4ff 100%);
-}
-
-.ai-card.pro {
-  background: linear-gradient(135deg, var(--red-light) 0%, #fff5f0 100%);
-}
+.ai-card.diy { background: linear-gradient(135deg, var(--blue-light) 0%, #f0f4ff 100%); }
+.ai-card.pro { background: linear-gradient(135deg, var(--red-light) 0%, #fff5f0 100%); }
 
 .ai-card-label {
   display: inline-flex;
@@ -635,15 +587,8 @@ body {
   margin-bottom: 20px;
 }
 
-.ai-card.diy .ai-card-label {
-  background: rgba(59,91,219,0.12);
-  color: var(--blue);
-}
-
-.ai-card.pro .ai-card-label {
-  background: rgba(214,58,58,0.12);
-  color: var(--red);
-}
+.ai-card.diy .ai-card-label { background: rgba(59,91,219,0.12); color: var(--blue); }
+.ai-card.pro .ai-card-label { background: rgba(214,58,58,0.12); color: var(--red); }
 
 .ai-card h3 {
   font-family: var(--font-display);
@@ -659,10 +604,6 @@ body {
   line-height: 1.6;
   margin-bottom: 28px;
   max-width: 360px;
-}
-
-.ai-card .phone-frame-sm {
-  margin-top: auto;
 }
 
 /* ========== WALTER ========== */
@@ -709,9 +650,7 @@ body {
   transform: translate(-50%, -50%);
 }
 
-.walter-content .section-title {
-  font-size: clamp(2rem, 3.5vw, 2.6rem);
-}
+.walter-content .section-title { font-size: clamp(2rem, 3.5vw, 2.6rem); }
 
 .walter-role {
   font-family: var(--font-display);
@@ -728,14 +667,10 @@ body {
   line-height: 1.75;
 }
 
-.walter-bio + .walter-bio {
-  margin-top: 16px;
-}
+.walter-bio + .walter-bio { margin-top: 16px; }
 
 /* ========== ABOUT ========== */
-.about {
-  padding: 100px 0;
-}
+.about { padding: 100px 0; }
 
 .about-inner {
   max-width: 720px;
@@ -743,9 +678,7 @@ body {
   text-align: center;
 }
 
-.about-inner .section-subtitle {
-  margin: 0 auto 32px;
-}
+.about-inner .section-subtitle { margin: 0 auto 32px; }
 
 .about-values {
   display: grid;
@@ -762,10 +695,7 @@ body {
   text-align: center;
 }
 
-.about-value-icon {
-  font-size: 1.6rem;
-  margin-bottom: 12px;
-}
+.about-value-icon { font-size: 1.6rem; margin-bottom: 12px; }
 
 .about-value h4 {
   font-family: var(--font-display);
@@ -782,9 +712,7 @@ body {
 }
 
 /* ========== CTA ========== */
-.cta-section {
-  padding: 80px 0 100px;
-}
+.cta-section { padding: 80px 0 100px; }
 
 .cta-card {
   background: var(--navy);
@@ -865,10 +793,7 @@ body {
   gap: 16px;
 }
 
-.footer-copy {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-}
+.footer-copy { font-size: 0.85rem; color: var(--text-secondary); }
 
 .footer-links {
   display: flex;
@@ -896,9 +821,7 @@ body {
   }
 
   .hero-description { margin: 0 auto 36px; }
-
   .hero-actions { justify-content: center; }
-
   .hero-phone { order: -1; }
 
   .hero-phone .phone-frame {
@@ -918,9 +841,7 @@ body {
   }
 
   .hiw-phone { order: -1; }
-
   .hiw-phone .phone-frame { width: 220px; }
-
   .hiw-steps-right { order: 3; }
 
   .ai-cards {
@@ -976,7 +897,7 @@ body {
 </head>
 <body>
 
-<!-- ========== NAV ========== -->
+<!-- NAV -->
 <nav class="nav" id="nav">
   <div class="container nav-inner">
     <a href="#" class="nav-logo">
@@ -995,12 +916,12 @@ body {
       <li><a href="#how-it-works">How It Works</a></li>
       <li><a href="#walter">Walter</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="/cdn-cgi/l/email-protection#a3cbc6cfcfcce3d4c2cfd7c6d1d7cccdc2c7d5c6cdd7d6d1c6d08dc0ccce" class="btn btn-primary nav-cta">Get Early Access</a></li>
+      <li><a href="mailto:hello&#64;waltertonadventures.com" class="btn btn-primary nav-cta">Get Early Access</a></li>
     </ul>
   </div>
 </nav>
 
-<!-- ========== HERO ========== -->
+<!-- HERO -->
 <section class="hero" id="hero">
   <div class="container hero-inner">
     <div class="hero-content">
@@ -1009,9 +930,9 @@ body {
         Coming soon to iOS
       </div>
       <h1 class="hero-title">Something broke.<br><em>Now what?</em></h1>
-      <p class="hero-description">HomeBase is the AI companion that walks first-time homeowners through repairs step by step — or tells you when it's time to call in a pro.</p>
+      <p class="hero-description">HomeBase is the AI companion that walks first-time homeowners through repairs step by step &mdash; or tells you when it's time to call in a pro.</p>
       <div class="hero-actions">
-        <a href="/cdn-cgi/l/email-protection#2b434e4747446b5c4a475f4e595f44454a4f5d4e455f5e594e5805484446" class="btn btn-primary">
+        <a href="mailto:hello&#64;waltertonadventures.com" class="btn btn-primary">
           Get Notified at Launch
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
@@ -1027,7 +948,7 @@ body {
   </div>
 </section>
 
-<!-- ========== TRUST BAR ========== -->
+<!-- TRUST BAR -->
 <div class="trust-bar">
   <div class="container trust-bar-inner">
     <div class="trust-item">
@@ -1045,54 +966,50 @@ body {
   </div>
 </div>
 
-<!-- ========== FEATURES ========== -->
+<!-- FEATURES -->
 <section class="features" id="features">
   <div class="container">
     <div class="features-header animate-on-scroll">
       <div class="section-label">Features</div>
       <h2 class="section-title">Three tools every homeowner needs</h2>
-      <p class="section-subtitle">HomeBase combines AI-powered diagnostics, a personalized home profile, and smart maintenance tracking — all in one app.</p>
+      <p class="section-subtitle">HomeBase combines AI-powered diagnostics, a personalized home profile, and smart maintenance tracking &mdash; all in one app.</p>
     </div>
     <div class="features-grid">
-
       <div class="feature-card animate-on-scroll">
         <div class="feature-icon blue">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
         </div>
         <h3>Smart Project Diagnosis</h3>
-        <p>Describe what's going on — in plain English. HomeBase asks the right follow-up questions, then gives you a clear plan: step-by-step DIY guidance or a pro referral with a script for what to tell the contractor.</p>
+        <p>Describe what's going on &mdash; in plain English. HomeBase asks the right follow-up questions, then gives you a clear plan: step-by-step DIY guidance or a pro referral with a script for what to tell the contractor.</p>
         <div class="feature-screenshot">
           <img src="describe-your-project.jpg" alt="Typing a project description into HomeBase" loading="lazy">
         </div>
       </div>
-
       <div class="feature-card animate-on-scroll">
         <div class="feature-icon green">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         </div>
         <h3>Your Home's Digital Brain</h3>
-        <p>Save your home's details — zip code, age, systems, equipment model numbers — and HomeBase uses it all to give smarter, more specific advice every time you start a project.</p>
+        <p>Save your home's details &mdash; zip code, age, systems, equipment model numbers &mdash; and HomeBase uses it all to give smarter, more specific advice every time you start a project.</p>
         <div class="feature-screenshot">
           <img src="my-home-profile.png" alt="My Home profile with saved systems and equipment" loading="lazy">
         </div>
       </div>
-
       <div class="feature-card animate-on-scroll">
         <div class="feature-icon orange">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         </div>
         <h3>Maintenance on Autopilot</h3>
-        <p>Changing filters, cleaning gutters, flushing the water heater — the stuff you always forget. HomeBase sends personalized reminders based on your home so nothing falls through the cracks.</p>
+        <p>Changing filters, cleaning gutters, flushing the water heater &mdash; the stuff you always forget. HomeBase sends personalized reminders based on your home so nothing falls through the cracks.</p>
         <div class="feature-screenshot">
           <img src="maintenance-reminders.jpg" alt="Maintenance reminders with task cards" loading="lazy">
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ========== HOW IT WORKS ========== -->
+<!-- HOW IT WORKS -->
 <section class="how-it-works" id="how-it-works">
   <div class="container">
     <div class="hiw-header animate-on-scroll">
@@ -1106,30 +1023,28 @@ body {
           <div class="hiw-step-num">1</div>
           <div>
             <h4>Describe what's happening</h4>
-            <p>Type it out or snap a photo. Use whatever words you want — HomeBase speaks homeowner, not contractor.</p>
+            <p>Type it out or snap a photo. Use whatever words you want &mdash; HomeBase speaks homeowner, not contractor.</p>
           </div>
         </div>
         <div class="hiw-step">
           <div class="hiw-step-num">2</div>
           <div>
             <h4>Answer a few smart questions</h4>
-            <p>HomeBase narrows down your situation with targeted follow-ups — like a knowledgeable friend who actually knows what they're talking about.</p>
+            <p>HomeBase narrows down your situation with targeted follow-ups &mdash; like a knowledgeable friend who actually knows what they're talking about.</p>
           </div>
         </div>
       </div>
-
       <div class="hiw-phone animate-on-scroll">
         <div class="phone-frame">
           <img src="diy-project-guidance.jpg" alt="HomeBase AI diagnostic conversation about mounting a TV" loading="lazy">
         </div>
       </div>
-
       <div class="hiw-steps hiw-steps-right animate-on-scroll">
         <div class="hiw-step">
           <div class="hiw-step-num">3</div>
           <div>
             <h4>Get your plan</h4>
-            <p>DIY? You'll get a step-by-step walkthrough with product recommendations. Need a pro? You'll get a contractor script and cost estimate — no awkward phone calls.</p>
+            <p>DIY? You'll get a step-by-step walkthrough with product recommendations. Need a pro? You'll get a contractor script and cost estimate &mdash; no awkward phone calls.</p>
           </div>
         </div>
       </div>
@@ -1137,19 +1052,19 @@ body {
   </div>
 </section>
 
-<!-- ========== AI SHOWCASE ========== -->
+<!-- AI SHOWCASE -->
 <section class="ai-showcase" id="ai-showcase">
   <div class="container">
     <div class="ai-showcase-header animate-on-scroll">
       <div class="section-label">AI That's Honest</div>
       <h2 class="section-title">It'll tell you when <em>not</em> to do it yourself</h2>
-      <p class="section-subtitle">Most apps want you to buy more stuff. HomeBase tells you the truth — even when the answer is "hire someone."</p>
+      <p class="section-subtitle">Most apps want you to buy more stuff. HomeBase tells you the truth &mdash; even when the answer is "hire someone."</p>
     </div>
     <div class="ai-cards">
       <div class="ai-card diy animate-on-scroll">
         <div class="ai-card-label">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M7 0a7 7 0 100 14A7 7 0 007 0zm3.5 5.74l-4 4a.75.75 0 01-1.06 0l-2-2a.75.75 0 111.06-1.06L6 8.18l3.47-3.47a.75.75 0 011.06 1.06z"/></svg>
-          DIY — You've Got This
+          DIY &mdash; You've Got This
         </div>
         <h3>Mount a TV? No sweat.</h3>
         <p>HomeBase walks you through the project, recommends the exact mount to buy, and gives you step-by-step instructions tailored to your TV and wall type.</p>
@@ -1157,23 +1072,22 @@ body {
           <img src="diy-project-guidance.jpg" alt="DIY project guidance for mounting a TV" loading="lazy">
         </div>
       </div>
-
       <div class="ai-card pro animate-on-scroll">
         <div class="ai-card-label">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M7 0a7 7 0 100 14A7 7 0 007 0zm.75 3.5v4a.75.75 0 01-1.5 0v-4a.75.75 0 011.5 0zM7 11a1 1 0 110-2 1 1 0 010 2z"/></svg>
-          Stop — Call a Professional
+          Stop &mdash; Call a Professional
         </div>
         <h3>Aluminum wiring? Hard no.</h3>
         <p>HomeBase flags safety risks before you touch anything. It explains why, gives you a cost estimate, and tells you exactly what to say when you call an electrician.</p>
         <div class="phone-frame phone-frame-sm">
-          <img src="call-a-pro-safety.jpg" alt="Safety warning recommending a licensed electrician" loading="lazy">
+          <img src="call-a-pro-safely.jpg" alt="Safety warning recommending a licensed electrician" loading="lazy">
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ========== WALTER ========== -->
+<!-- WALTER -->
 <section class="walter-section" id="walter">
   <div class="container">
     <div class="walter-inner animate-on-scroll">
@@ -1184,49 +1098,48 @@ body {
         <div class="section-label">Meet the Team</div>
         <h2 class="section-title">This is Walter.</h2>
         <span class="walter-role">Chief Morale Officer, Walterton Adventures LLC</span>
-        <p class="walter-bio">Walter is an Old English Sheepdog, the official mascot of Walterton Adventures, and the reason the company exists. He's not great at fixing things — but he's excellent at supervising from the couch while you do.</p>
+        <p class="walter-bio">Walter is an Old English Sheepdog, the official mascot of Walterton Adventures, and the reason the company exists. He's not great at fixing things &mdash; but he's excellent at supervising from the couch while you do.</p>
         <p class="walter-bio">He believes every homeowner deserves a companion who'll stick with them through leaky faucets, mysterious noises, and the existential dread of a tripped breaker. That companion is HomeBase. Walter just provides the moral support.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ========== ABOUT ========== -->
+<!-- ABOUT -->
 <section class="about" id="about">
   <div class="container">
     <div class="about-inner animate-on-scroll">
       <div class="section-label">About</div>
       <h2 class="section-title">Built for the "now what?" moment</h2>
-      <p class="section-subtitle">Buying your first home is exciting — and then something breaks. Walterton Adventures was founded to close the knowledge gap between new homeowners and the skills they need. We believe everyone deserves clear, trustworthy guidance.</p>
-
+      <p class="section-subtitle">Buying your first home is exciting &mdash; and then something breaks. Walterton Adventures was founded to close the knowledge gap between new homeowners and the skills they need. We believe everyone deserves clear, trustworthy guidance.</p>
       <div class="about-values">
         <div class="about-value">
-          <div class="about-value-icon">🛡️</div>
+          <div class="about-value-icon">&#x1F6E1;&#xFE0F;</div>
           <h4>Safety First</h4>
           <p>HomeBase recognizes when a project exceeds safe DIY territory and recommends a licensed professional instead.</p>
         </div>
         <div class="about-value">
-          <div class="about-value-icon">🎯</div>
+          <div class="about-value-icon">&#x1F3AF;</div>
           <h4>Specific, Not Generic</h4>
-          <p>Advice tailored to your actual home, equipment, and skill level — not a one-size-fits-all YouTube video.</p>
+          <p>Advice tailored to your actual home, equipment, and skill level &mdash; not a one-size-fits-all YouTube video.</p>
         </div>
         <div class="about-value">
-          <div class="about-value-icon">🤝</div>
+          <div class="about-value-icon">&#x1F91D;</div>
           <h4>Honest Answers</h4>
-          <p>We'd rather tell you to call a pro than put you at risk. No upsells, no agenda — just the right call for your situation.</p>
+          <p>We'd rather tell you to call a pro than put you at risk. No upsells, no agenda &mdash; just the right call for your situation.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ========== CTA ========== -->
+<!-- CTA -->
 <section class="cta-section">
   <div class="container">
     <div class="cta-card animate-on-scroll">
       <h2 class="section-title">Stop Googling.<br>Start fixing.</h2>
       <p>HomeBase is launching soon on iOS. Drop us a line to get early access and be the first to know when it's live.</p>
-      <a href="/cdn-cgi/l/email-protection#b9d1dcd5d5d6f9ced8d5cddccbcdd6d7d8ddcfdcd7cdcccbdcca97dad6d4" class="btn btn-primary">
+      <a href="mailto:hello&#64;waltertonadventures.com" class="btn btn-primary">
         Get Early Access
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
@@ -1235,36 +1148,68 @@ body {
   </div>
 </section>
 
-<!-- ========== FOOTER ========== -->
+<!-- FOOTER -->
 <footer class="footer">
   <div class="container footer-inner">
     <p class="footer-copy">&copy; 2026 Walterton Adventures LLC</p>
     <ul class="footer-links">
       <li><a href="privacy.html">Privacy</a></li>
       <li><a href="terms.html">Terms</a></li>
-      <li><a href="/cdn-cgi/l/email-protection#a6cec3cacac9e6d1c7cad2c3d4d2c9c8c7c2d0c3c8d2d3d4c3d588c5c9cb">Contact</a></li>
+      <li><a href="mailto:hello&#64;waltertonadventures.com">Contact</a></li>
     </ul>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // Nav scroll effect
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 40);
+var nav = document.getElementById('nav');
+window.addEventListener('scroll', function() {
+  if (window.scrollY > 40) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
 });
 
 // Mobile menu
-const toggle = document.getElementById('mobileToggle');
-const links = document.getElementById('navLinks');
-toggle.addEventListener('click', () => {
-  links.classList.toggle('open');
+var toggle = document.getElementById('mobileToggle');
+var navLinks = document.getElementById('navLinks');
+toggle.addEventListener('click', function() {
+  navLinks.classList.toggle('open');
 });
 
 // Close mobile menu on link click
-links.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => links.classList.remove('open'));
-});
+var allNavLinks = navLinks.querySelectorAll('a');
+for (var i = 0; i < allNavLinks.length; i++) {
+  allNavLinks[i].addEventListener('click', function() {
+    navLinks.classList.remove('open');
+  });
+}
 
-// Scroll animations
-const observer = new Intersec
+// Scroll animations — JS adds hidden state, so content is visible if JS fails
+var animElements = document.querySelectorAll('.animate-on-scroll');
+for (var j = 0; j < animElements.length; j++) {
+  animElements[j].classList.add('scroll-hidden');
+}
+
+if ('IntersectionObserver' in window) {
+  var observer = new IntersectionObserver(function(entries) {
+    for (var k = 0; k < entries.length; k++) {
+      if (entries[k].isIntersecting) {
+        entries[k].target.classList.add('visible');
+      }
+    }
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  for (var m = 0; m < animElements.length; m++) {
+    observer.observe(animElements[m]);
+  }
+} else {
+  // Fallback: just show everything if IntersectionObserver not supported
+  for (var n = 0; n < animElements.length; n++) {
+    animElements[n].classList.add('visible');
+  }
+}
+</script>
+</body>
+</html>
